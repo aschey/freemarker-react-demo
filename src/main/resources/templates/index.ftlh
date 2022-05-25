@@ -34,5 +34,4 @@ window.addCar = (make, model) => {
       </tr>
     </#list>
   </table>
-  <input type="hidden" id="myVal" value='${model["carList"][0]}'>
 </div>

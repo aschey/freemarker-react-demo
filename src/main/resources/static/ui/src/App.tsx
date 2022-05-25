@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useSessionStorage } from './useSessionStorage';
 
 declare global {
   function addCar(make: string, model: string): void;
 }
 
-function App() {
+const App: React.FC<{}> = () => {
+  const [checked, setChecked] = useSessionStorage("checked", false);
+
   return (
     <>
       <button onClick={async () => {
@@ -18,20 +21,19 @@ function App() {
         let formData = new FormData();
         formData.append('make', 'Ferrari');
         formData.append('model', 'Enzo');
-        let res = await fetch('add', {
+        await fetch('add', {
           method: 'POST',
           body: formData,
           // This causes a request cancelled error in the browser but it prevents the useless call to the redirect uri
           redirect: 'manual',
         })
-
-        console.log(res.redirected);
         // Javascript-initiated requests can't automatically follow redirects. The response is just treated as a normal api response and no redirect is performed.
         window.location.reload();
         //setLiked(true);
       }}>
         API Call
       </button>
+      <input type={'checkbox'} checked={checked} onClick={() => setChecked(checked => !checked)} />
     </>
   );
 }
