@@ -5,10 +5,19 @@ import { useSessionStorage } from './useSessionStorage';
 
 declare global {
   function addCar(make: string, model: string): void;
+  function setSecret(secret: string): void;
+  interface Window {
+    numRequests: number;
+  }
 }
 
 const App: React.FC<{}> = () => {
-  const [checked, setChecked] = useSessionStorage("checked", false);
+  const [checked, setChecked] = useSessionStorage('checked', false);
+  const [secretVal, setSecretVal] = useSessionStorage('secret', '');
+
+  useEffect(() => {
+    setSecret(secretVal);
+  }, [secretVal]);
 
   return (
     <>
@@ -21,6 +30,7 @@ const App: React.FC<{}> = () => {
         let formData = new FormData();
         formData.append('make', 'Ferrari');
         formData.append('model', 'Enzo');
+        formData.append('secret', secretVal);
         await fetch('add', {
           method: 'POST',
           body: formData,
@@ -29,11 +39,12 @@ const App: React.FC<{}> = () => {
         })
         // Javascript-initiated requests can't automatically follow redirects. The response is just treated as a normal api response and no redirect is performed.
         window.location.reload();
-        //setLiked(true);
       }}>
         API Call
       </button>
-      <input type={'checkbox'} defaultChecked={checked} onClick={() => setChecked(checked => !checked)} />
+      <input type='checkbox' defaultChecked={checked} onClick={() => setChecked(checked => !checked)} />
+      <input type='text' value={secretVal} onChange={(e) => setSecretVal(e.currentTarget.value)} />
+      Num Requests: {window.numRequests}
     </>
   );
 }
