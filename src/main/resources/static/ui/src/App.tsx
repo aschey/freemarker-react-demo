@@ -33,7 +33,7 @@ const App: React.FC<{}> = () => {
       }}>
         API Call
       </button>
-      <input type={'checkbox'} checked={checked} onClick={() => setChecked(checked => !checked)} />
+      <input type={'checkbox'} defaultChecked={checked} onClick={() => setChecked(checked => !checked)} />
     </>
   );
 }
