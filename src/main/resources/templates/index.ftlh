@@ -1,4 +1,4 @@
-<#include "header.ftlh">
+<#include "header.html">
 <script>
 window.addCar = (make, model) => {
   let id = document.getElementById.bind(document);

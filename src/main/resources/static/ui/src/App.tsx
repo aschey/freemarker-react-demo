@@ -10,12 +10,11 @@ function App() {
   return (
     <>
       <button onClick={async () => {
-        addCar('yes', 'yes');
+        addCar('Bugatti', 'Veyron');
       }}>
         Trigger Form
       </button>
       <button onClick={async () => {
-        // addCar('yes', 'yes');
         let formData = new FormData();
         formData.append('make', 'Ferrari');
         formData.append('model', 'Enzo');
