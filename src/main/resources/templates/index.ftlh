@@ -1,4 +1,8 @@
+<#if dev!false == true>
+<#include "devHeader.html">
+<#else>
 <#include "header.html">
+</#if>
 <script>
 window.addCar = (make, model) => {
   let id = document.getElementById.bind(document);
