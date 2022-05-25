@@ -10,7 +10,7 @@ window.addCar = (make, model) => {
 <div id="header">
   <h2>FreeMarker Spring MVC Hello World</h2>
 </div>
-<div id="like_button_container"></div>
+<div id="root"></div>
 
 <div id="content">
   <fieldset>
