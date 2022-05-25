@@ -23,3 +23,5 @@
 hs_err_pid*
 .gradle
 bin
+# generated react build
+src/main/resources/static/react
