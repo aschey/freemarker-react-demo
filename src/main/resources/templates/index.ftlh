@@ -6,7 +6,7 @@
 
 <script>
 var numRequests = ${model["numRequests"]};
- let id = document.getElementById.bind(document);
+let id = document.getElementById.bind(document);
 
 window.addCar = (make, model) => {
   id('make').value = make;
