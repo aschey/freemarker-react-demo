@@ -25,3 +25,5 @@ hs_err_pid*
 bin
 # generated react build
 src/main/resources/static/react
+src/main/resources/static/dist
+node_modules
